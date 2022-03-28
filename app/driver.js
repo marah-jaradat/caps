@@ -1,5 +1,6 @@
 "use strict";
-const eventEmitter = require("../events");
+
+const eventEmitter = require("../lib/events");
 const vendor = require("./vendor");
 
 // Event Handler
@@ -28,7 +29,7 @@ function inTransitFun(payload) {
   payload.time = new Date().toString();
   console.log("EVENT", payload);
   setTimeout(() => {
-    eventEmitter.emit("]elivered", payload), 3000;
+    eventEmitter.emit("Delivered", payload), 3000;
   });
 }
 

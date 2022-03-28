@@ -1,6 +1,6 @@
 "use strict";
 
-const events = require("../events");
+const events = require("../lib/events");
 const { faker } = require("@faker-js/faker");
 
 let myStore = {
@@ -27,7 +27,7 @@ describe("testing events", () => {
     await consoleSpy();
     expect(consoleSpy).toHaveBeenCalled();
   });
-  it("in-transiet eventEmitter testing", async () => {
+  it("in-transit eventEmitter testing", async () => {
     events.emit("in-transit", myStore);
     await consoleSpy();
     expect(consoleSpy).toHaveBeenCalled();
