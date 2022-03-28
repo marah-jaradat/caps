@@ -11,29 +11,33 @@ let myStore = {
 };
 
 describe("testing events", () => {
+  const myStore = "testing";
   let consoleSpy;
-  beforeAll(() => {
+  beforeEach(() => {
     consoleSpy = jest.spyOn(console, "log").mockImplementation();
   });
-
-  it("orderHandling testing", async () => {
-    events.emit("is ready to go ", myStore);
-    await consoleSpy();
-    expect(consoleSpy).toHaveBeenCalled();
+  afterAll(() => {
+    consoleSpy.mockRestore();
   });
 
-  it("pickup eventEmmiter test", async () => {
-    events.emit("pickup", myStore);
+  it("testing ReadyToGo", async () => {
+    events.emit("orderDelever ", myStore);
     await consoleSpy();
     expect(consoleSpy).toHaveBeenCalled();
   });
-  it("in-transit eventEmitter testing", async () => {
-    events.emit("in-transit", myStore);
+
+  it("packageDeleivered test", async () => {
+    events.emit("packageDeleivered", myStore);
     await consoleSpy();
     expect(consoleSpy).toHaveBeenCalled();
   });
-  it("delivered eventEmitter testing", async () => {
-    events.emit("delivered", myStore);
+  it("pickupFun testing", async () => {
+    events.emit("packageDeleiver", myStore);
+    await consoleSpy();
+    expect(consoleSpy).toHaveBeenCalled();
+  });
+  it("deleiveredFun testing", async () => {
+    events.emit("packageDeleivered", myStore);
     await consoleSpy();
     expect(consoleSpy).toHaveBeenCalled();
   });

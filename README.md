@@ -5,6 +5,12 @@ This will be an event driven application that “distributes” the responsibili
 ## UML diagram
 ![UML](./assets/cap.png)
 
+## npm test
+![test](./assets/test.png)
+
+## the output
+![output](./assets/out.png)
+
 ## **here are the links for the server:**
 
 **1. The Actions link:**
