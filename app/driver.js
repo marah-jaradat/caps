@@ -1,43 +1,36 @@
-"use strict";
-
 const eventEmitter = require("../lib/events");
-const vendor = require("./vendor");
+require("./vendor");
 
-// Event Handler
-eventEmitter.on("pickup", pickupFun);
-eventEmitter.on("in-transit", inTransitFun);
-eventEmitter.on("delivered", deliveredFun);
+eventEmitter.on("pickedUp", pickupFun);
+eventEmitter.on("packageDeleiver", deleiveredFun);
+eventEmitter.on("orderDelever", orderHandel);
 
-function orderHandling() {
-  eventEmitter.emit("picking up orders", {
-    event: "pickup",
-    time: new Date().toString(),
-    payload: vendor,
-  });
+function orderHandel(payload) {
+  console.log(`DRIVER: picked up${payload.orderID}`);
+  setTimeout(() => {
+    eventEmitter.emit("pickedUp", payload);
+  }, 3000);
 }
 
 function pickupFun(payload) {
-  console.log("EVENT", payload);
-  console.log(`DRIVER : picked up ${payload.payload.orderID} `);
+  console.log(`EVENT: "in-transit"
+  time:${new Date().toISOString()},
+  payload: {
+    store: ${payload.store},
+    orderID: ${payload.orderID},
+    customer: ${payload.customer},
+    address: ${payload.address}
+  }
+  `);
+  console.log(`DRIVER: delivered up order ${payload.orderID}`);
   setTimeout(() => {
-    eventEmitter.emit("in-transit", payload), 1000;
-  });
+    eventEmitter.emit("packageDeleiver", payload);
+  }, 3000);
 }
 
-function inTransitFun(payload) {
-  payload.event = "in-transit";
-  payload.time = new Date().toString();
-  console.log("EVENT", payload);
+function deleiveredFun(payload) {
+  // console.log(`DRIVER: delivered order ${payload.orderID}`);
   setTimeout(() => {
-    eventEmitter.emit("Delivered", payload), 3000;
-  });
+    eventEmitter.emit("packageDeleivered", payload);
+  }, 100);
 }
-
-function deliveredFun(payload) {
-  payload.event = "delivered";
-  payload.time = new Date().toString();
-  console.log(`DRIVER : delivered up ${payload.payload.orderID}`);
-  console.log(`VENDOR : Thank you for delivering ${payload.payload.orderID}`);
-  console.log("EVENT", payload);
-}
-module.exports = { orderHandling };
