@@ -8,9 +8,9 @@ This will be an event driven application that “distributes” the responsibili
 ## **here are the links for the server:**
 
 **1. The Actions link:**
-   [Actions](https://github.com/marah-jaradat/bearer-auth/actions)
+   [Actions](https://github.com/marah-jaradat/caps/actions)
 
 **2. The Pull request:**
-   [pull request](https://github.com/marah-jaradat/bearer-auth/pull/6)
+   [pull request](https://github.com/marah-jaradat/caps/pull/2)
 
 

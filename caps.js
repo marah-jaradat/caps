@@ -1,7 +1,9 @@
 "use strict";
 
-// require("./app/vendor");
-const driver = require("./app/driver");
+require("./app/vendor");
+const eventEmitter = require("./lib/events");
+const orderHandling = require("./app/driver");
+
 setInterval(() => {
-  driver.orderHandling();
+  eventEmitter.orderHandling;
 }, 5000);
