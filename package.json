@@ -2,7 +2,7 @@
   "name": "caps",
   "version": "1.0.0",
   "description": "This will be an event driven application that “distributes” the responsibility for logging to separate modules, using only events to trigger logging based on activity.",
-  "main": "index.js",
+  "main": "caps.js",
   "scripts": {
     "test": "jest --coverage --verbose",
     "start": "node caps.js"
@@ -26,9 +26,11 @@
     "express": "^4.17.3",
     "faker": "^6.6.6",
     "jest": "^27.5.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "sequelize": "^6.17.0",
     "sqlite3": "^5.0.2",
     "uuid": "^8.3.2"
   }
+  
 }
